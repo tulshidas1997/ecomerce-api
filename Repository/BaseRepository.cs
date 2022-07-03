@@ -16,6 +16,11 @@ public class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey> wher
         _dbSet = _context.Set<TEntity>();
     }
 
+    public async Task<List<TEntity>> GetAll()
+    {
+        return await All().ToListAsync();
+    }
+
     public void AddToContext(TEntity entity)
     {
         _context.Add(entity);
@@ -44,12 +49,12 @@ public class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey> wher
         return SaveChanges();
     }
 
-    public IQueryable<TEntity> All()
+    protected IQueryable<TEntity> All()
     {
         return _dbSet.Where(x => !x.IsDeleted);
     }
 
-    public IQueryable<TEntity> AsQuery()
+    protected IQueryable<TEntity> AsQuery()
     {
         return _dbSet.AsQueryable();
     }
@@ -142,4 +147,4 @@ public class BaseRepository<T> : BaseRepository<T, int> where T : BaseModel
     public BaseRepository(AppDbContext context) : base(context)
     {
     }
-};
+}

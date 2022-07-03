@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Interfaces\Common\" />
     <Folder Include="Interfaces\Services\" />
     <Folder Include="Models\" />
     <Folder Include="Dtos\" />
@@ -14,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.6" />
   </ItemGroup>
 

@@ -4,7 +4,7 @@ namespace Core.Interfaces.Repositories;
 
 public interface IBaseRepository<TEntity, TKey> where TEntity : BaseModel<TKey>
 {
-    IQueryable<TEntity> All();
+    Task<List<TEntity>> GetAll();
     void AddToContext(TEntity entity);
     bool Add(TEntity entity);
     void AddListToContext(IEnumerable<TEntity> entities);
@@ -23,7 +23,6 @@ public interface IBaseRepository<TEntity, TKey> where TEntity : BaseModel<TKey>
     void ParmanentDeleteFromContext(TEntity entity);
     void ParmanentDeleteList(IEnumerable<TEntity> entities);
     Task ParmanentDeleteListAsync(IEnumerable<TEntity> entities);
-    IQueryable<TEntity> AsQuery();
 }
 
 
