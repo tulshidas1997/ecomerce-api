@@ -2,19 +2,27 @@
 
 namespace Core.Interfaces;
 
-public interface IBaseRepository<T,K> where T : BaseModel<K>
+public interface IBaseRepository<TEntity,TKey> where TEntity : BaseModel<TKey>
 {
-    IEnumerable<T> All();
-    void AddToContext(T entry);
-    Task Add(T entry);
-    void AddListToContext(IEnumerable<T> entities);
-    Task AddList(IEnumerable<T> entities);
-    void DeleteFromContext(T entry);
-    Task Delete(T entry);
-    Task SaveChanges();
+    IQueryable<TEntity> All();
+    void AddToContext(TEntity entity);
+    bool Add(TEntity entity);
+    void AddListToContext(IEnumerable<TEntity> entities);
+    bool AddList(IEnumerable<TEntity> entities);
+    void DeleteFromContext(TEntity entity);
+    void Delete(TEntity entity);
+    void DeleteListFromContext(IEnumerable<TEntity> entities);
+    void DeleteList(IEnumerable<TEntity> entities);
+    Task DeleteListAsync(IEnumerable<TEntity> entities);
+    bool SaveChanges();
+    Task<bool> SaveChangesAsync();
 
-
-
+    Task<bool> AddAsync(TEntity entity);
+    Task DeleteAsync(TEntity entity);
+    Task ParmentDeleteAsync(TEntity entity);
+    void ParmanentDeleteFromContext(TEntity entity);
+    void ParmanentDeleteList(IEnumerable<TEntity> entities);
+    Task ParmanentDeleteListAsync(IEnumerable<TEntity> entities);
 }
 
 
@@ -22,4 +30,4 @@ public interface IBaseRepository<T,K> where T : BaseModel<K>
 
 
 //donot add properties/fields/methods to this class. Do that in the above class.
-public interface IBaseRepository<T>:IBaseRepository<T, int> where T : BaseModel { }
+public interface IBaseRepository<TEntity>:IBaseRepository<TEntity, int> where TEntity : BaseModel { }

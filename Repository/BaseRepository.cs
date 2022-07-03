@@ -1,50 +1,140 @@
 ﻿using Core.Interfaces;
 using Core.Models;
+using Microsoft.EntityFrameworkCore;
+using Repositories.Context;
 
 namespace Repositories;
 
-public class BaseRepository<T, K> : IBaseRepository<T, K> where T:BaseModel<K>
+public class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey> where TEntity:BaseModel<TKey>
 {
-    //public  Type { get; set; }
-    public Task Add(T entry)
+    private readonly AppDbContext _context;
+    private readonly DbSet<TEntity> _dbSet;
+
+    public BaseRepository(AppDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
+        _dbSet = _context.Set<TEntity>();
     }
 
-    public Task AddList(IEnumerable<T> entities)
+    public void AddToContext(TEntity entity)
     {
-        throw new NotImplementedException();
+        _context.Add(entity);
     }
 
-    public void AddListToContext(IEnumerable<T> entities)
+    public bool Add(TEntity entity)
     {
-        throw new NotImplementedException();
+        _context.Add(entity);
+        return SaveChanges();
     }
 
-    public void AddToContext(T entry)
+    public async Task<bool> AddAsync(TEntity entity)
     {
-        throw new NotImplementedException();
+        _context.Add(entity);
+        return await SaveChangesAsync();
     }
 
-    public IEnumerable<T> All()
+    public void AddListToContext(IEnumerable<TEntity> entities)
     {
-        throw new NotImplementedException();
+        _context.AddRange(entities);
     }
 
-    public Task Delete(T entry)
+    public bool AddList(IEnumerable<TEntity> entities)
     {
-        throw new NotImplementedException();
+        AddListToContext(entities);
+        return SaveChanges();
     }
 
-    public void DeleteFromContext(T entry)
+    public IQueryable<TEntity> All()
     {
-        throw new NotImplementedException();
+        return _dbSet.Where(x => !x.IsDeleted);
+    }
+    public void DeleteFromContext(TEntity entity)
+    {
+        entity.IsDeleted = true;
     }
 
-    public Task SaveChanges()
+    public void ParmanentDeleteFromContext(TEntity entity)
     {
-        throw new NotImplementedException();
+        _context.Remove(entity);
+    }
+
+    public void Delete(TEntity entity)
+    {
+        DeleteFromContext(entity);
+        SaveChanges();
+    }
+
+    public async Task DeleteAsync(TEntity entity)
+    {
+        DeleteFromContext(entity);
+        await SaveChangesAsync();
+    }
+
+    public async Task ParmentDeleteAsync(TEntity entity)
+    {
+        ParmanentDeleteFromContext(entity);
+        await SaveChangesAsync();
+    }
+
+    public void DeleteListFromContext(IEnumerable<TEntity> entities)
+    {
+        if (entities?.Any() == true)
+        {
+            foreach (var entity in entities)
+            {
+                entity.IsDeleted = true;
+            }
+        }
+    }
+
+    public void ParmanentDeleteListFromContext(IEnumerable<TEntity> entities)
+    {
+        if (entities?.Any() == true)
+        {
+            _context.RemoveRange(entities);
+        }
+    }
+
+    public void DeleteList(IEnumerable<TEntity> entities)
+    {
+        DeleteListFromContext(entities);
+        _context.SaveChanges();
+    }
+
+    public void ParmanentDeleteList(IEnumerable<TEntity> entities)
+    {
+        ParmanentDeleteListFromContext(entities);
+        _context.SaveChanges();
+    }
+
+    public async Task DeleteListAsync(IEnumerable<TEntity> entities)
+    {
+        DeleteListFromContext(entities);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task ParmanentDeleteListAsync(IEnumerable<TEntity> entities)
+    {
+        ParmanentDeleteListFromContext(entities);
+        await _context.SaveChangesAsync();
+    }
+
+    public bool SaveChanges()
+    {
+        return _context.SaveChanges() > 0;
+    }
+
+    public async Task<bool> SaveChangesAsync()
+    {
+        return await _context.SaveChangesAsync() > 0;
     }
 }
 
-public class BaseRepository<T>:BaseRepository<T,int> where T:BaseModel{};
+
+//do not add properties/fields/methods to this class. Do that in the above class.
+public class BaseRepository<T> : BaseRepository<T, int> where T : BaseModel
+{
+    public BaseRepository(AppDbContext context) : base(context)
+    {
+    }
+};
