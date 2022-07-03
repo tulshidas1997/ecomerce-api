@@ -48,6 +48,11 @@ public class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey> wher
     {
         return _dbSet.Where(x => !x.IsDeleted);
     }
+
+    public IQueryable<TEntity> AsQuery()
+    {
+        return _dbSet.AsQueryable();
+    }
     public void DeleteFromContext(TEntity entity)
     {
         entity.IsDeleted = true;

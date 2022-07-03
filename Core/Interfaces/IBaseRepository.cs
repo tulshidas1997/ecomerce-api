@@ -23,6 +23,7 @@ public interface IBaseRepository<TEntity,TKey> where TEntity : BaseModel<TKey>
     void ParmanentDeleteFromContext(TEntity entity);
     void ParmanentDeleteList(IEnumerable<TEntity> entities);
     Task ParmanentDeleteListAsync(IEnumerable<TEntity> entities);
+    IQueryable<TEntity> AsQuery();
 }
 
 
