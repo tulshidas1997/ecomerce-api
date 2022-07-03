@@ -1,8 +1,8 @@
 ﻿using Core.Models;
 
-namespace Core.Interfaces;
+namespace Core.Interfaces.Repositories;
 
-public interface IBaseRepository<TEntity,TKey> where TEntity : BaseModel<TKey>
+public interface IBaseRepository<TEntity, TKey> where TEntity : BaseModel<TKey>
 {
     IQueryable<TEntity> All();
     void AddToContext(TEntity entity);
@@ -31,4 +31,4 @@ public interface IBaseRepository<TEntity,TKey> where TEntity : BaseModel<TKey>
 
 
 //donot add properties/fields/methods to this class. Do that in the above class.
-public interface IBaseRepository<TEntity>:IBaseRepository<TEntity, int> where TEntity : BaseModel { }
+public interface IBaseRepository<TEntity> : IBaseRepository<TEntity, int> where TEntity : BaseModel { }
