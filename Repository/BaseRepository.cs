@@ -6,6 +6,7 @@ using Repositories.Context;
 namespace Repositories;
 
 public class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey> where TEntity:BaseModel<TKey>
+
 {
     private readonly AppDbContext _context;
     private readonly DbSet<TEntity> _dbSet;
@@ -19,6 +20,11 @@ public class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey> wher
     public async Task<List<TEntity>> GetAll()
     {
         return await All().ToListAsync();
+    }
+
+    public async Task<TEntity> GetById(TKey id)
+    {
+        return (await All().Where(x => x.Id.Equals(id)).FirstOrDefaultAsync())!;
     }
 
     public void AddToContext(TEntity entity)
@@ -146,5 +152,6 @@ public class BaseRepository<T> : BaseRepository<T, int> where T : BaseModel
 {
     public BaseRepository(AppDbContext context) : base(context)
     {
+        //var g = Guid.NewGuid().ToString()
     }
 }
