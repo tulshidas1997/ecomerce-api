@@ -2,7 +2,7 @@
 using Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 
-namespace Services;
+namespace CleanArchitecture.Services;
 
 public class CurrentUserService:ICurrentUserService
 {

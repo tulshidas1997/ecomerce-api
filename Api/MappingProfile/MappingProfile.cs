@@ -1,14 +1,14 @@
 ﻿using System.Reflection;
 using AutoMapper;
-using Core.Interfaces.Common;
+using CleanArchitecture.Core.Interfaces.Common;
 
-namespace AspNet6SqlServerCleanArchitecture.MappingProfile;
+namespace CleanArchitecture.Api.MappingProfile;
 
 public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        var assembly = AppDomain.CurrentDomain.GetAssemblies().Where(c => c.FullName.StartsWith(nameof(AspNet6SqlServerCleanArchitecture))).ToArray();
+        var assembly = AppDomain.CurrentDomain.GetAssemblies().Where(c => c.FullName.StartsWith(nameof(CleanArchitecture))).ToArray();
         ApplyMappingsFromAssembly(assembly);
     }
 

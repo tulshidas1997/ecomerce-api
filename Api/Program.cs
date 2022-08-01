@@ -1,6 +1,6 @@
-using AspNet6SqlServerCleanArchitecture.Extensions;
+using CleanArchitecture.Api.Extensions;
+using CleanArchitecture.Repositories.Context;
 using Microsoft.EntityFrameworkCore;
-using Repositories.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 

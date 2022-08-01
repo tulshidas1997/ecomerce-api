@@ -1,4 +1,4 @@
-﻿namespace Core.Types;
+﻿namespace CleanArchitecture.Core.Types;
 
 public class ApiResult<T>
 {

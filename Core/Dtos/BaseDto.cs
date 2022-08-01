@@ -1,4 +1,4 @@
-﻿namespace Core.Dtos;
+﻿namespace CleanArchitecture.Core.Dtos;
 
 public class BaseDto<T>
 {

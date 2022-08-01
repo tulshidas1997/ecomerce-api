@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet6SqlServerCleanArchitecture", "AspNet6SqlServerCleanArchitecture\AspNet6SqlServerCleanArchitecture.csproj", "{F034828A-B170-4CEB-8D5E-EC8B5FA6276B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Api", "Api\CleanArchitecture.Api.csproj", "{F034828A-B170-4CEB-8D5E-EC8B5FA6276B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{ED8424F5-CA78-4896-B5EB-5CC60197178C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Core", "Core\CleanArchitecture.Core.csproj", "{ED8424F5-CA78-4896-B5EB-5CC60197178C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repository\Repositories.csproj", "{C30961CD-F9DE-4F96-8893-D762130BF261}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Repositories", "Repository\CleanArchitecture.Repositories.csproj", "{C30961CD-F9DE-4F96-8893-D762130BF261}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{4F90469B-CE18-48D1-BEB0-1EA5D911DEB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Services", "Services\CleanArchitecture.Services.csproj", "{4F90469B-CE18-48D1-BEB0-1EA5D911DEB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

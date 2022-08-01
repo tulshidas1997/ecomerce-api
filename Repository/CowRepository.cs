@@ -1,8 +1,8 @@
-﻿using Core.Interfaces.Repositories;
+﻿using CleanArchitecture.Core.Interfaces.Repositories;
+using CleanArchitecture.Repositories.Context;
 using Core.Models;
-using Repositories.Context;
 
-namespace Repositories
+namespace CleanArchitecture.Repositories
 {
     public class CowRepository : BaseRepository<Cow>, ICowRepository
     {

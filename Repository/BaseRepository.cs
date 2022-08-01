@@ -1,9 +1,9 @@
-﻿using Core.Interfaces.Repositories;
+﻿using CleanArchitecture.Core.Interfaces.Repositories;
+using CleanArchitecture.Repositories.Context;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
-using Repositories.Context;
 
-namespace Repositories;
+namespace CleanArchitecture.Repositories;
 
 public class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey> where TEntity:BaseModel<TKey>
 

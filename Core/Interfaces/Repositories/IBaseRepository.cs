@@ -1,6 +1,6 @@
 ﻿using Core.Models;
 
-namespace Core.Interfaces.Repositories;
+namespace CleanArchitecture.Core.Interfaces.Repositories;
 
 public interface IBaseRepository<TEntity, TKey> where TEntity : BaseModel<TKey>
 {

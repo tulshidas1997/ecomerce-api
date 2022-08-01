@@ -1,4 +1,5 @@
-﻿using Core.Interfaces.Common;
+﻿using CleanArchitecture.Core.Dtos;
+using CleanArchitecture.Core.Interfaces.Common;
 using Core.Models;
 
 namespace Core.Dtos;

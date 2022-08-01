@@ -1,12 +1,12 @@
-﻿using Core.Interfaces;
-using Core.Interfaces.Repositories;
-using Core.Interfaces.Services;
+﻿using CleanArchitecture.Core.Interfaces.Repositories;
+using CleanArchitecture.Core.Interfaces.Services;
+using CleanArchitecture.Repositories;
+using CleanArchitecture.Repositories.Context;
+using CleanArchitecture.Services;
+using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Repositories;
-using Repositories.Context;
-using Services;
 
-namespace AspNet6SqlServerCleanArchitecture.Extensions;
+namespace CleanArchitecture.Api.Extensions;
 
 public static class ServiceRegister
 {

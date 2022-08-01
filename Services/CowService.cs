@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
+using CleanArchitecture.Core.Interfaces.Repositories;
+using CleanArchitecture.Core.Interfaces.Services;
 using Core.Dtos;
-using Core.Interfaces.Repositories;
-using Core.Interfaces.Services;
 using Core.Models;
 
-namespace Services;
+namespace CleanArchitecture.Services;
 
 public class CowService:BaseService<Cow,CowDto>,ICowService
 {

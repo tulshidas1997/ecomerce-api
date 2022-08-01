@@ -1,14 +1,12 @@
-﻿using Core.Dtos;
-using Core.Interfaces.Repositories;
-using Core.Models;
+﻿using CleanArchitecture.Core.Dtos;
 
-namespace Core.Interfaces.Services;
+namespace CleanArchitecture.Core.Interfaces.Services;
 
 public interface IBaseService<TDto, TKey> where TDto : BaseDto<TKey>
 {
     Task<List<TDto>> GetAll();
     Task<TDto> GetById(TKey Id);
-    Task Create(TDto dto);
+    Task<TDto> Create(TDto dto);
     Task Update(TDto dto);
     Task Delete(TKey Id);
     Task ParmanentDelete(TKey Id);

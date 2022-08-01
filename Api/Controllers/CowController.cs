@@ -1,10 +1,9 @@
-﻿using Core.Dtos;
-using Core.Interfaces.Services;
-using Core.Models;
-using Core.Types;
+﻿using CleanArchitecture.Core.Interfaces.Services;
+using CleanArchitecture.Core.Types;
+using Core.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AspNet6SqlServerCleanArchitecture.Controllers;
+namespace CleanArchitecture.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -21,6 +20,13 @@ public class CowController:ApiController
     public async Task<ActionResult<ApiResult<List<CowDto>>>> GetAll()
     {
         var cows = await _cow.GetAll();
+        return OkResult(cows);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<ApiResult<CowDto>>> Create(CowDto cow)
+    {
+        var cows = await _cow.Create(cow);
         return OkResult(cows);
     }
 }

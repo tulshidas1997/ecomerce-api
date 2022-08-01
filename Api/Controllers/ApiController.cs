@@ -1,9 +1,9 @@
-﻿using Core.Types;
+﻿using CleanArchitecture.Core.Types;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AspNet6SqlServerCleanArchitecture.Controllers;
+namespace CleanArchitecture.Api.Controllers;
 
-public class ApiController:ControllerBase
+public class ApiController : ControllerBase
 {
     protected ActionResult<ApiResult<T>> OkResult<T>(T data)
     {

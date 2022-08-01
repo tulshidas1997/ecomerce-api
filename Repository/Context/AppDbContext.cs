@@ -1,9 +1,10 @@
-﻿using Core.Interfaces;
+﻿using CleanArchitecture.Core.Models;
+using Core.Interfaces;
 using Core.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Repositories.Context;
+namespace CleanArchitecture.Repositories.Context;
 
 public sealed class AppDbContext: IdentityDbContext<AppUser>
 {

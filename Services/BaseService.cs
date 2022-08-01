@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using Core.Dtos;
-using Core.Interfaces.Repositories;
-using Core.Interfaces.Services;
+using CleanArchitecture.Core.Dtos;
+using CleanArchitecture.Core.Interfaces.Repositories;
+using CleanArchitecture.Core.Interfaces.Services;
 using Core.Models;
 
-namespace Services;
+namespace CleanArchitecture.Services;
 
 public class BaseService<TEntity, TDto, TKey> : IBaseService<TDto,TKey> where TEntity : BaseModel<TKey> where TDto : BaseDto<TKey> 
 {
@@ -29,9 +29,11 @@ public class BaseService<TEntity, TDto, TKey> : IBaseService<TDto,TKey> where TE
         return _mapper.Map<TDto>(item);
     }
 
-    public Task Create(TDto dto)
+    public async Task<TDto> Create(TDto dto)
     {
-        throw new NotImplementedException();
+        var entity = _mapper.Map<TEntity>(dto);
+        await _repo.AddAsync(entity);
+        return _mapper.Map<TDto>(entity);
     }
 
     public Task Update(TDto dto)
