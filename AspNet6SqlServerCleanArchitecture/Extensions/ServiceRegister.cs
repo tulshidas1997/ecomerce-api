@@ -1,7 +1,9 @@
 ﻿using Core.Interfaces;
 using Core.Interfaces.Repositories;
 using Core.Interfaces.Services;
+using Microsoft.EntityFrameworkCore;
 using Repositories;
+using Repositories.Context;
 using Services;
 
 namespace AspNet6SqlServerCleanArchitecture.Extensions;
@@ -32,5 +34,17 @@ public static class ServiceRegister
         services.AddScoped<ICurrentUserService, CurrentUserService>();
 
         #endregion
+    }
+
+    public static async Task ExecuteScopedActions(this WebApplication app)
+    {
+        using var scope = app.Services.CreateScope();
+        await ExecuteMigration(scope);
+
+    }
+    public static async Task ExecuteMigration(IServiceScope scope)
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        await dbContext.Database.MigrateAsync();
     }
 }
