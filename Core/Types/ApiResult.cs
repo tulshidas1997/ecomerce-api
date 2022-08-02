@@ -1,4 +1,6 @@
-﻿namespace CleanArchitecture.Core.Types;
+﻿using CleanArchitecture.Core.Enums;
+
+namespace CleanArchitecture.Core.Types;
 
 public class ApiResult<T>
 {
@@ -6,7 +8,10 @@ public class ApiResult<T>
     {
         this.Data = data;
     }
+    public ApiResult(){}
     public bool IsSuccess { get; set; } = true;
     public T Data { get; set; }
     public string Message { get; set; }
+    public MessageDisplayType MessageDisplayType { get; set; }
+    public object Error { get; set; }
 }
