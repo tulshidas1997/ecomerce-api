@@ -1,12 +1,24 @@
 using CleanArchitecture.Api.Extensions;
 using CleanArchitecture.Repositories.Context;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(o =>
+{
+    o.SerializerSettings.Converters.Add(new StringEnumConverter
+    {
+        NamingStrategy = new CamelCaseNamingStrategy()
+    });
+    o.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+    o.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+});
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
