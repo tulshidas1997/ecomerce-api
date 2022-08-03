@@ -7,7 +7,6 @@ using CleanArchitecture.Repositories;
 using CleanArchitecture.Repositories.Context;
 using CleanArchitecture.Services;
 using Core.Interfaces;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +24,7 @@ public static class ServiceRegister
         #region Services
 
         services.AddScoped<ICowService,CowService>();
+        services.AddScoped<IAuthService, AuthService>();
 
         #endregion
 
@@ -164,5 +164,10 @@ public static class ServiceRegister
                 },
             });
         }).AddSwaggerGenNewtonsoftSupport();
+    }
+
+    public static void LoadData(this WebApplicationBuilder builder)
+    {
+        builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
     }
 }

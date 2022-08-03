@@ -9,7 +9,7 @@ using Newtonsoft.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.LoadData();
 builder.Services.AddControllers().AddNewtonsoftJson(o =>
 {
     o.SerializerSettings.Converters.Add(new StringEnumConverter

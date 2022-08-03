@@ -10,4 +10,10 @@ public class ApiController : ControllerBase
         var result = new ApiResult<T>(data);
         return Ok(result);
     }
+
+    protected ActionResult<ApiResult<object>> Error(object error)
+    {
+        var result = new ApiResult<object>(){Error = error,IsSuccess = false};
+        return BadRequest(result);
+    }
 }

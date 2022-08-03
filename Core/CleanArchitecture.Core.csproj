@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\Common\" />
-    <Folder Include="Interfaces\Services\" />
     <Folder Include="Models\" />
     <Folder Include="Dtos\" />
     <Folder Include="Middlewares\" />
