@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Repositories.Context;
 
-public sealed class AppDbContext: IdentityDbContext<AppUser>
+public sealed class AppDbContext: IdentityDbContext<AppUser,AppRole,string>
 {
     private readonly ICurrentUserService _currentUserService;
     public AppDbContext(DbContextOptions<AppDbContext> opt, ICurrentUserService currentUserService):base(opt)

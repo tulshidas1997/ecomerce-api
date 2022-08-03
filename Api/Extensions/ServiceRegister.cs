@@ -25,6 +25,7 @@ public static class ServiceRegister
 
         services.AddScoped<ICowService,CowService>();
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IDataService, DataService>();
 
         #endregion
 
@@ -41,6 +42,7 @@ public static class ServiceRegister
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddScoped<ICurrentUserService, CurrentUserService>();
+
 
         #endregion
     }
@@ -59,7 +61,7 @@ public static class ServiceRegister
 
     public static void AddIdentity(this WebApplicationBuilder builder)
     {
-        builder.Services.AddIdentity<AppUser, IdentityRole>(
+        builder.Services.AddIdentity<AppUser, AppRole>(
             opt =>
             {
                 opt.Password.RequireDigit = false;

@@ -5,7 +5,7 @@ namespace CleanArchitecture.Core.Types;
 public class LoginPayload
 {
     [Required]
-    public string EmailOrPhone { get; set; }
+    public string UserName { get; set; }
     [Required]
     public string Password { get; set; }
 }

@@ -4,5 +4,6 @@ namespace CleanArchitecture.Core.Models;
 
 public class AppUser: IdentityUser
 {
-    public int Age { get; set; }   
+    public int Age { get; set; }
+    public string FullName { get; set; }
 }

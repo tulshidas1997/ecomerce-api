@@ -24,9 +24,7 @@ public class AuthService:IAuthService
 
     public async Task<LoginResult> LoginAsync(LoginPayload request)
     {
-        AppUser user;
-        if(request.EmailOrPhone.Contains("@")) user = await _user.FindByEmailAsync(request.EmailOrPhone);
-        else user = await _user.Users.Where(x=>x.PhoneNumber == request.EmailOrPhone).FirstOrDefaultAsync();
+        AppUser user = await _user.FindByNameAsync(request.UserName);
         if (user is null)
         {
             throw new CustomException($"Authentication failed.");
