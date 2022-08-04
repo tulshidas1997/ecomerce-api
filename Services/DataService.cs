@@ -38,8 +38,9 @@ public class DataService:IDataService
             new AppUser()
             {
                 UserName = "user.name",
-                Email = "tulshidas37@gmail.com",
-                FullName = "Firstname lastName"
+                Email = "user@user.com",
+                FullName = "Firstname lastName",
+                Age = 28,
             }
         };
 
@@ -55,7 +56,6 @@ public class DataService:IDataService
                     var result = await _user.CreateAsync(user, "123456");
                     
                     Console.WriteLine("done");
-                    //_user.ConfirmEmailAsync()
                 }
                 else
                 {
