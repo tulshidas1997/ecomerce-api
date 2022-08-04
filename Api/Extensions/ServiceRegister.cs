@@ -51,13 +51,15 @@ public static class ServiceRegister
     {
         using var scope = app.Services.CreateScope();
         await ExecuteMigration(scope);
-
     }
     public static async Task ExecuteMigration(IServiceScope scope)
     {
+        Console.WriteLine("Running Migrations...");
         var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
         await dbContext.Database.MigrateAsync();
+        Console.WriteLine("Migration done.");
     }
+
 
     public static void AddIdentity(this WebApplicationBuilder builder)
     {
