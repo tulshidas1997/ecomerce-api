@@ -70,7 +70,7 @@ public static class ServiceRegister
                 opt.Password.RequireUppercase = false;
                 opt.Password.RequireLowercase = false;
                 opt.SignIn.RequireConfirmedEmail = false;
-                opt.SignIn.RequireConfirmedPhoneNumber = true;
+                opt.SignIn.RequireConfirmedPhoneNumber = false;
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
     }
 

@@ -1,6 +1,7 @@
 ﻿using CleanArchitecture.Core.Interfaces.Services;
 using CleanArchitecture.Core.Types;
 using Core.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitecture.Api.Controllers;
@@ -16,6 +17,7 @@ public class CowController:ApiController
         _cow = cow;
     }
 
+    [Authorize]
     [HttpGet("all")]
     public async Task<ActionResult<ApiResult<List<CowDto>>>> GetAll()
     {

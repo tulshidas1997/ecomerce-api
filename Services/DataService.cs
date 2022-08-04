@@ -38,7 +38,7 @@ public class DataService:IDataService
             new AppUser()
             {
                 UserName = "user.name",
-                Email = "user@user.com",
+                Email = "tulshidas37@gmail.com",
                 FullName = "Firstname lastName"
             }
         };
@@ -52,7 +52,10 @@ public class DataService:IDataService
                 var existingUser = existingUsers.FirstOrDefault(x => x.UserName == user.UserName);
                 if (existingUser is null)
                 {
-                    await _user.CreateAsync(user, "123456");
+                    var result = await _user.CreateAsync(user, "123456");
+                    
+                    Console.WriteLine("done");
+                    //_user.ConfirmEmailAsync()
                 }
                 else
                 {
