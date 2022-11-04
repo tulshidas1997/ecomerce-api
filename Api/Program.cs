@@ -1,6 +1,8 @@
 using CleanArchitecture.Api.Extensions;
 using CleanArchitecture.Core.Middlewares;
+using CleanArchitecture.Core.Utilities;
 using CleanArchitecture.Repositories.Context;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -18,6 +20,13 @@ builder.Services.AddControllers().AddNewtonsoftJson(o =>
     });
     o.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
     o.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+}).ConfigureApiBehaviorOptions(o =>
+{
+    o.InvalidModelStateResponseFactory = context =>
+    {
+        var result = new Utility().GetErrorResponse(context.ModelState.Values.SelectMany(x => x.Errors), "Bad Request");
+        return new BadRequestObjectResult(result);
+    };
 });
 
 builder.Services.RegisterDependency();
