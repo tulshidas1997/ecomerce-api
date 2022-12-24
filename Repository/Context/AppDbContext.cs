@@ -15,4 +15,11 @@ public sealed class AppDbContext: IdentityDbContext<AppUser,AppRole,string>
     }
 
     public DbSet<Cow> Cows { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<AppUser>().ToTable("Users");
+        modelBuilder.Entity<AppRole>().ToTable("Roles");
+    }
 }
