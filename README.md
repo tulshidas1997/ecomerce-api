@@ -7,10 +7,11 @@ Features
  - Authorization
  - Logging
  - Error handling
- - Unit test using NUnit
+ - Unit test
 
  Tools and Techs
 
  - Asp.Net
  - Entity framework core
  - SQL Server
+ - NUnit unit test framework
