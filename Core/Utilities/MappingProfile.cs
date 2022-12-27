@@ -2,10 +2,12 @@
 using AutoMapper;
 using CleanArchitecture.Core.Interfaces.Common;
 
-namespace CleanArchitecture.Api.MappingProfile;
+namespace CleanArchitecture.Core.Utilities;
 
 public class MappingProfile : Profile
 {
+    private readonly string interfaceName = nameof(IMapFrom<object>);
+    private readonly string methodName = nameof(IMapFrom<object>.Mapping);
     public MappingProfile()
     {
         var assembly = AppDomain.CurrentDomain.GetAssemblies().Where(c => c.FullName.StartsWith(nameof(CleanArchitecture))).ToArray();
@@ -28,8 +30,8 @@ public class MappingProfile : Profile
         {
             var instance = Activator.CreateInstance(type);
 
-            var methodInfo = type.GetMethod( "Mapping")
-                             ?? type.GetInterface("IMapFrom`1")?.GetMethod("Mapping");
+            var methodInfo = type.GetMethod(methodName)
+                             ?? type.GetInterface($"{interfaceName}`1")?.GetMethod(methodName);
 
             methodInfo?.Invoke(instance, new object[] { this });
 

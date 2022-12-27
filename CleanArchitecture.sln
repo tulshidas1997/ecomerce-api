@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Repositor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Services", "Services\CleanArchitecture.Services.csproj", "{4F90469B-CE18-48D1-BEB0-1EA5D911DEB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Test", "CleanArchitecture.Test\CleanArchitecture.Test.csproj", "{CF2950F4-2E6A-4787-8F1D-D59CC0164522}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4F90469B-CE18-48D1-BEB0-1EA5D911DEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F90469B-CE18-48D1-BEB0-1EA5D911DEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F90469B-CE18-48D1-BEB0-1EA5D911DEB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF2950F4-2E6A-4787-8F1D-D59CC0164522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF2950F4-2E6A-4787-8F1D-D59CC0164522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF2950F4-2E6A-4787-8F1D-D59CC0164522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF2950F4-2E6A-4787-8F1D-D59CC0164522}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

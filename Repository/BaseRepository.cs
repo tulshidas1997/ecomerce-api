@@ -38,7 +38,7 @@ public class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey> wher
         return SaveChanges();
     }
 
-    public async Task<bool> AddAsync(TEntity entity)
+    public virtual async Task<bool> AddAsync(TEntity entity)
     {
         _context.Add(entity);
         return await SaveChangesAsync();

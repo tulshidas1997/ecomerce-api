@@ -9,7 +9,7 @@ namespace CleanArchitecture.Services;
 public class BaseService<TEntity, TDto, TKey> : IBaseService<TDto,TKey> where TEntity : BaseModel<TKey> where TDto : BaseDto<TKey> 
 {
     private readonly IBaseRepository<TEntity, TKey> _repo;
-    private readonly IMapper _mapper;
+    protected readonly IMapper _mapper;
 
     public BaseService(IBaseRepository<TEntity, TKey> repo, IMapper mapper)
     {
