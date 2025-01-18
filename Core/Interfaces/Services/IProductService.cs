@@ -9,5 +9,6 @@ namespace CleanArchitecture.Core.Interfaces.Services
 {
     public interface IProductService:IBaseService<ProductDto>
     {
+        public Task UpdateProduct(ProductDto productDto);
     }
 }

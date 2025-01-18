@@ -47,5 +47,14 @@ namespace CleanArchitecture.Api.Controllers
             await _product.ParmanentDelete(id);
             return OkResult(true);
         }
+
+        [HttpPut("quantity")]
+        public async Task<ActionResult<ApiResult<bool>>> UpdateCartQuantity([FromQuery]int productId,[FromQuery] int quantity)
+        {
+            var entity = await _product.GetById(productId);
+            entity.Quantity = quantity;            
+            await _product.UpdateProduct(entity);
+            return OkResult(true);
+        }
     }
 }
