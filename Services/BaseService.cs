@@ -46,9 +46,10 @@ public class BaseService<TEntity, TDto, TKey> : IBaseService<TDto,TKey> where TE
         throw new NotImplementedException();
     }
 
-    public Task ParmanentDelete(TKey Id)
+    public async Task ParmanentDelete(TKey Id)
     {
-        throw new NotImplementedException();
+        var entity = await _repo.GetById(Id);
+        await _repo.ParmentDeleteAsync(entity);
     }
 }
 

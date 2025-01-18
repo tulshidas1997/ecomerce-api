@@ -33,5 +33,19 @@ namespace CleanArchitecture.Api.Controllers
             var result = await _product.Create(product);
             return OkResult(result);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ApiResult<ProductDto>>> Create(int id)
+        {
+            var result = await _product.GetById(id);
+            return OkResult(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ApiResult<bool>>> Remove(int id)
+        {
+            await _product.ParmanentDelete(id);
+            return OkResult(true);
+        }
     }
 }
