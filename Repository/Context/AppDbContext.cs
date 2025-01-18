@@ -15,6 +15,7 @@ public sealed class AppDbContext: IdentityDbContext<AppUser,AppRole,string>
     }
 
     public DbSet<Cow> Cows { get; set; }
+    public DbSet<Product> Products { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

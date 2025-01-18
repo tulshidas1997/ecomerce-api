@@ -26,6 +26,7 @@ public static class ServiceRegister
         services.AddScoped<ICowService,CowService>();
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IDataService, DataService>();
+        services.AddScoped<IProductService, ProductService>();
 
         #endregion
 
@@ -34,6 +35,7 @@ public static class ServiceRegister
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
         services.AddScoped(typeof(IBaseRepository<,>), typeof(BaseRepository<,>));
         services.AddScoped<ICowRepository,CowRepository>();
+        services.AddScoped<IProductRepository,ProductRepository>();
 
         #endregion
 
