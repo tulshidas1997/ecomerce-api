@@ -26,5 +26,12 @@ namespace CleanArchitecture.Api.Controllers
             var cows = await _product.GetAll();
             return OkResult(cows);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<ApiResult<ProductDto>>> Create(ProductDto product)
+        {
+            var result = await _product.Create(product);
+            return OkResult(result);
+        }
     }
 }
